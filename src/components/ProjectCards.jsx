@@ -1,66 +1,80 @@
-import React from "react";
+import { motion } from "framer-motion";
 
-export default function ProjectCards({
+const ProjectCards = ({
   title,
   description,
   tech,
-  image,
-  liveLink,
   githubLink,
-}) {
+  liveLink,
+  image,
+}) => {
   return (
-    <div className="group bg-gray-800 rounded-xl overflow-hidden shadow-lg transform transition duration-500 hover:-translate-y-4 hover:shadow-cyan-500/20">
-      
-      {/* Image */}
-      <div className="overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-52 object-cover group-hover:scale-110 transition duration-500"
-        />
+    <motion.div
+      className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-cyan-500/20 transition"
+      whileHover={{ scale: 1.05 }}
+    >
+      {/* 🖼️ Project Image (placeholder for now) */}
+      <div className="h-40 bg-gray-700 flex items-center justify-center">
+        {image ? (
+          <img
+            src={image}
+            alt={title}
+            className="h-40 w-full object-cover"
+          />
+        ) : (
+          <div className="h-40 bg-gray-700 flex items-center justify-center">
+            <span className="text-gray-400">No Image</span>
+          </div>
+        )}
       </div>
 
       {/* Content */}
-      <div className="p-6">
-        <h3 className="text-xl font-semibold mb-3">{title}</h3>
+      <div className="p-5">
+        <h3 className="text-xl font-semibold text-cyan-400">
+          {title}
+        </h3>
 
-        <p className="text-gray-400 text-sm mb-4">
+        <p className="text-gray-400 mt-2 text-sm">
           {description}
         </p>
 
-        {/* Tech Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {tech.map((item, index) => (
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mt-3">
+          {tech?.map((t, i) => (
             <span
-              key={index}
-              className="text-xs bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full"
+              key={i}
+              className="bg-gray-700 px-2 py-1 rounded text-xs"
             >
-              {item}
+              {t}
             </span>
           ))}
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-4">
-          <a
-            href={liveLink}
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 rounded-md text-sm font-medium transition"
-          >
-            Live
-          </a>
+        <div className="flex gap-4 mt-5">
+          {githubLink && (
+            <a
+              href={githubLink}
+              target="_blank"
+              className="text-sm px-3 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition"
+            >
+              GitHub
+            </a>
+          )}
 
-          <a
-            href={githubLink}
-            target="_blank"
-            rel="noreferrer"
-            className="px-4 py-2 border border-cyan-400 hover:bg-cyan-400 hover:text-black rounded-md text-sm font-medium transition"
-          >
-            GitHub
-          </a>
+          {liveLink && (
+            <a
+              href={liveLink}
+              target="_blank"
+              className="text-sm px-3 py-2 bg-cyan-500 hover:bg-cyan-600 rounded-lg transition"
+            >
+              Live Demo
+            </a>
+          )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
-}
+};
+
+export default ProjectCards;

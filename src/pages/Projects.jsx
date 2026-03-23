@@ -1,33 +1,37 @@
 import React from "react";
-import ProjectCards from '../components/ProjectCards'
+import ProjectCards from "../components/ProjectCards";
+// 🖼️ Import Images (add these in src/assets/)
+import chat from "../assets/chat.png";
+import crypto from "../assets/crypto.png";
+import portfolio from "../assets/portfolio.png";
 
 const projects = [
   {
-    title: "Task Manager App",
+    title: "Real-Time Chat App",
     description:
-      "A responsive task management app with add, delete, and filter functionality.",
-    tech: ["React", "Tailwind", "LocalStorage"],
-    image: "https://via.placeholder.com/500x300",
-    liveLink: "#",
-    githubLink: "#",
+      "Built using MERN + Socket.io with real-time messaging and authentication.",
+    githubLink: "https://github.com/s4abi/mern-chat-app",
+    liveLink: "",
+    tech: ["React", "Node.js", "MongoDB", "Socket.io"],
+    image: chat,
   },
   {
-    title: "Weather App",
+    title: "CryptoPulse",
     description:
-      "Weather application using API to fetch real-time weather data by city.",
+      "Crypto data visualization app with real-time API integration.",
+    githubLink: "https://github.com/s4abi/cryptopulse",
+    liveLink: "",
     tech: ["React", "API", "Tailwind"],
-    image: "https://via.placeholder.com/500x300",
-    liveLink: "#",
-    githubLink: "#",
+    image: crypto,
   },
   {
-    title: "Notes App",
+    title: "Portfolio Website",
     description:
-      "Full CRUD notes app with authentication and cloud storage integration.",
-    tech: ["React", "Firebase", "Tailwind"],
-    image: "https://via.placeholder.com/500x300",
-    liveLink: "#",
-    githubLink: "#",
+      "Personal portfolio showcasing projects and skills.",
+    githubLink: "https://github.com/s4abi/Portfolio",
+    liveLink: "",
+    tech: ["React", "Tailwind"],
+    image: portfolio,
   },
 ];
 
@@ -38,10 +42,13 @@ export default function Projects() {
       className="min-h-screen bg-gray-900 text-white px-6 py-20"
     >
       <div className="max-w-7xl mx-auto">
+
+        {/* Title */}
         <h2 className="text-4xl font-bold text-center mb-14 text-cyan-400">
           My Projects
         </h2>
 
+        {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
             <ProjectCards
@@ -49,12 +56,13 @@ export default function Projects() {
               title={project.title}
               description={project.description}
               tech={project.tech}
-              image={project.image}
-              liveLink={project.liveLink}
               githubLink={project.githubLink}
+              liveLink={project.liveLink}
+              image={project.image}
             />
           ))}
         </div>
+
       </div>
     </section>
   );

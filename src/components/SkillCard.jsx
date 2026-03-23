@@ -1,17 +1,13 @@
-import React from "react";
-
-export default function SkillCard({ icon, name }) {
-  const IconComponent = icon;
+const SkillCard = ({ name, icon: Icon }) => {
   return (
-    <div className="bg-gray-800 rounded-xl p-6 flex flex-col items-center justify-center 
-                    transition duration-300 transform hover:-translate-y-3 
-                    hover:shadow-lg hover:shadow-cyan-500/20 group">
-      
-      <IconComponent className="text-4xl text-cyan-400 mb-4 group-hover:scale-110 transition duration-300" />
-      
-      <h3 className="text-white font-medium text-lg">
-        {name}
-      </h3>
+    <div className="bg-gray-800 p-6 rounded-xl flex flex-col items-center justify-center 
+                    hover:scale-110 hover:bg-gray-700 transition duration-300 shadow-lg">
+
+      <Icon className="text-4xl text-cyan-400 mb-3" />
+
+      <p className="text-gray-300 font-medium">{name}</p>
     </div>
   );
-}
+};
+
+export default SkillCard;
